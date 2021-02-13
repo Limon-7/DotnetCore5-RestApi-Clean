@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApiCore5.Contracts.V1.Requests
 {
-	public class UpdatePostRequest
+	public class UpdatePostAsyncRequest
 	{
 		public string Name { get; set; }
 	}

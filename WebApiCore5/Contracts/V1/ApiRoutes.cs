@@ -23,5 +23,11 @@ namespace WebApiCore5.Contracts.V1
 			public const string Create = Base + "/post";
 			
 		}
+		public static class Identity
+		{
+			public const string Register = Base + "/identity/register";
+
+			public const string Login = Base + "/identity/login";
+		}
 	}
 }

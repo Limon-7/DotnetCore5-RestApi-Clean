@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebApiCore5.Domain;
 
 namespace WebApiCore5.Data
 {
@@ -12,5 +13,6 @@ namespace WebApiCore5.Data
 			: base(options)
 		{
 		}
+		public DbSet<Post> Posts { get; set; }
 	}
 }

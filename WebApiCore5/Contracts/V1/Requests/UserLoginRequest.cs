@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApiCore5.Contracts.V1.Requests
 {
-	public class CreatePostAsyncRequest
+	public class UserLoginRequest
 	{
-		public string Name { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
 	}
 }
