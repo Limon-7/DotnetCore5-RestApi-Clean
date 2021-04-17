@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApiCore5.Contracts.V1.Responses
+namespace WebApiCore5.Contracts.V1.Requests
 {
-    public class AuthSuccessResponse
+    public class RefreshTokenRequest
     {
         public string Token { get; set; }
-        public Guid RefreshToken { get; internal set; }
+        public Guid RefreshToken { get; set; }
     }
 }

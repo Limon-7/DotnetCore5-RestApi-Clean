@@ -26,7 +26,17 @@ namespace WebApiCore5.Installers
 
 			services.AddScoped<IIdentityService, IdentityService>();
 			services.AddControllers();
-
+			var tokenValidationParameters = new TokenValidationParameters
+			{
+				ValidateIssuerSigningKey = true,
+				IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
+				ValidateIssuer = false,
+				ValidateAudience = false,
+				RequireExpirationTime = false,
+				ValidateLifetime = true
+			};
+			// register it to ioc and provide everywhere and make a single instance
+			services.AddSingleton(tokenValidationParameters);
 			services.AddAuthentication(x =>
 			{
 				x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -37,15 +47,7 @@ namespace WebApiCore5.Installers
 					  x =>
 					  {
 						  x.SaveToken = true;
-						  x.TokenValidationParameters = new TokenValidationParameters
-						  {
-							  ValidateIssuerSigningKey = true,
-							  IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
-							  ValidateIssuer = false,
-							  ValidateAudience = false,
-							  RequireExpirationTime = false,
-							  ValidateLifetime = true
-						  };
+						  x.TokenValidationParameters = tokenValidationParameters;
 					  }
 				);
 
